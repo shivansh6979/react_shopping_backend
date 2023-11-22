@@ -6,7 +6,7 @@ const PORT = process.env.PORT;
 const DB_URL = process.env.DB_URI;
 const mongoose = require("mongoose");
 
-const LoginRoutes = require("./routes/AuthRoutes");
+const AuthRoutes = require("./routes/AuthRoutes");
 
 // db connection
 mongoose
@@ -24,4 +24,4 @@ mongoose
 app.use(express.json());
 app.use(cors());
 
-app.use(LoginRoutes);
+app.use(AuthRoutes);
