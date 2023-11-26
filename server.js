@@ -7,7 +7,7 @@ const DB_URL = process.env.DB_URI;
 const mongoose = require("mongoose");
 
 const AuthRoutes = require("./routes/AuthRoutes");
-
+const ProductRoutes = require("./routes/ProductsRoutes");
 // db connection
 mongoose
   .connect(DB_URL)
@@ -25,3 +25,4 @@ app.use(express.json());
 app.use(cors());
 
 app.use(AuthRoutes);
+app.use(ProductRoutes);

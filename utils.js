@@ -19,16 +19,17 @@ const validatePassword = async (password) => {
 };
 
 const validateCredentials = async (email, password) => {
+  console.log("eeeeeeeeeee", email, password);
   const validationError = [];
   const emailFlag = validateEmail(email);
   const passwordFlag = validatePassword(password);
-  if (emailFlag) {
+  if (!emailFlag) {
     validationError.push({
       field: "email",
       message: "Email is not in the required format !",
     });
   }
-  if (passwordFlag) {
+  if (!passwordFlag) {
     validationError.push({
       field: "password",
       message: "password is not in the required format !",
@@ -37,20 +38,8 @@ const validateCredentials = async (email, password) => {
   return validationError;
 };
 
-const createToken = async (id) => {
-  const token = await jwt.sign(
-    id,
-    "My app secret",
-    { algorithm: "RS256" },
-    (err, token) => {
-      if (err) {
-        console.error(err);
-      } else if (token) {
-        console.log("token", token);
-      }
-    }
-  );
-  return token;
+const createToken = (id) => {
+  return jwt.sign({ id }, "My app secret", { expiresIn: "1h" });
 };
 
 module.exports = {
