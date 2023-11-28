@@ -1,4 +1,5 @@
 const Product = require("../models/ProductsModels");
+const Category_List = require("../json/CategoryList");
 
 const createProducts = async (req, res) => {
   const {
@@ -47,7 +48,13 @@ const createProducts = async (req, res) => {
   }
 };
 
-const fetchCategories = async (req, res) => {};
+const fetchCategories = async (req, res) => {
+  return res.status(200).json({
+    status: "SUCCESS",
+    msg: "Categories Fetched Successfully !",
+    response: Category_List,
+  });
+};
 
 module.exports = {
   createProducts,

@@ -32,7 +32,7 @@ const validateCredentials = async (email, password) => {
   if (!passwordFlag) {
     validationError.push({
       field: "password",
-      message: "password is not in the required format !",
+      message: "Password is not in the required format !",
     });
   }
   return validationError;
